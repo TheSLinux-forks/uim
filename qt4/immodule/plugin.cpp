@@ -35,15 +35,16 @@
 #include "plugin.h"
 
 #include <clocale>
-
+#include <QtGui>
 #include <QtCore/QStringList>
-#ifdef Q_WS_X11
-# include <QtGui/QX11Info>
-#endif
 #if QT_VERSION < 0x050000
-# include <QtGui/QInputContext>
+ #include <QtGui/QInputContext>
+ #ifdef Q_WS_X11
+  #include <QtGui/QX11Info>
+ #endif
 #else
-# include <qpa/qplatforminputcontext.h>
+ #include <qpa/qplatforminputcontext.h>
+ #include <QtX11Extras/QX11Info>
 #endif
 
 #include "uim/uim.h"
